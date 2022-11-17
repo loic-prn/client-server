@@ -15,6 +15,6 @@
 #ifndef __VALIDATION_H__
 #define __VALIDATION_H__
 
-int validate_json(char* data);
+int is_invalid_json(char* data);
 
 #endif // __VALIDATION_H__

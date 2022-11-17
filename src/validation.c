@@ -39,7 +39,7 @@ int check_array_content(char* data){
     return EXIT_SUCCESS;
 }
 
-int validate_json(char* data){
+int is_invalid_json(char* data){
     unsigned int start_index = 0;
     // check if the minimal length is reached
     if(strlen(data) < (strlen(FIRST_JSON_PART) + CODE_LEN + strlen(ARRAY_JSON_PART))){

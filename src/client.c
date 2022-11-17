@@ -214,19 +214,17 @@ int envoie_couleurs(int socketfd, char* image_path){
   if(image_path == NULL){
     printf("[+] Veuillez entrer le chemin de l'image: ");
     fgets(image_path, sizeof(char)*DATA_LEN, stdin);
-    image_path[strlen(image_path) - 1] = '\0';
+    remove_last_newline(image_path);
+    strncpy(pathname, image_path, 1024);
   }
   else {
     strncpy(data, image_path, 1024);
+    printf("argv[1] = %s\n", data);
   }
-
-
-  printf("\n[+] Veuillez renseigner le chemin d'accès de votre image:\n");
-  fgets(pathname,sizeof(char)*DATA_LEN,stdin);
-  pathname[strlen(pathname)-1] = '\0';
 
   memset(data, 0, sizeof(char)*DATA_LEN);
   analyse(pathname, data);
+  printf("after analyse\n");
 
   int status = write(socketfd, data, strlen(data));
   if (status < 0){
